@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { DisplayLists } from 'src/app/model/display-lists.model';
+
+import { GetPerListService } from 'src/app/service/get-per-list.service';
 
 @Component({
   selector: 'app-stock-lists',
@@ -8,7 +11,9 @@ import { DisplayLists } from 'src/app/model/display-lists.model';
 })
 export class StockListsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private getPerListService: GetPerListService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -19,9 +24,8 @@ export class StockListsComponent implements OnInit {
 }
 
 const ELEMENT_DATA: DisplayLists[] = [
-  {ticker: 'AA', company: 'Hydrogen', sector: 'aa', PER: 1.0079, PSR: 1.0079, PBR: 1.0079, yield: 1.0079 },
-  {ticker: 'AA', company: 'Helium', sector: 'aa',  PER: 1.0079, PSR: 1.0079, PBR: 1.0079, yield: 1.0079 },
-  {ticker: 'AA', company: 'Lithium', sector: 'aa',  PER: 1.0079, PSR: 1.0079, PBR: 1.0079, yield: 1.0079 },
-  {ticker: 'AA', company: 'Beryllium', sector: 'aa',  PER: 1.0079, PSR: 1.0079, PBR: 1.0079, yield: 1.0079 },
-  {ticker: 'AA', company: 'Boron', sector: 'aa',  PER: 1.0079, PSR: 1.0079, PBR: 1.0079, yield: 1.0079 },
+  {Ticker: 'AA', Company: 'Hydrogen', Sector: 'aa', PER: 1.0079, perFlug: true,  PSR: 1.0079, PBR: 1.0079, Yield: 1.0079 },
+  {Ticker: 'AA', Company: 'Helium', Sector: 'aa',  PER: 1.0079, perFlug: false, PSR: 1.0079, PBR: 1.0079, Yield: 1.0079 },
+  {Ticker: 'AA', Company: 'Lithium', Sector: 'aa',  PER: 1.0079, perFlug: false, PSR: 1.0079, PBR: 1.0079, Yield: 1.0079 },
+  {Ticker: 'AA', Company: 'Boron', Sector: 'aa',  PER: 1.0079, perFlug: false, PSR: 1.0079, PBR: 1.0079, Yield: 1.0079 },
 ];

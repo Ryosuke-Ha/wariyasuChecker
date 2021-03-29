@@ -1,9 +1,10 @@
 export interface DisplayLists {
-  ticker: string;
-  company: string;
-  sector: string;
+  Ticker: string;
+  Company: string;
+  Sector: string;
   PER: number;
+  perFlug: boolean;
   PSR: number;
   PBR: number;
-  yield: number;
+  Yield: number;
 }
