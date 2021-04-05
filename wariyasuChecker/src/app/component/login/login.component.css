@@ -1,0 +1,7 @@
+.wrap-card {
+  display: inline-block;
+}
+
+.wrap-card .card {
+  width: 60%;
+}
