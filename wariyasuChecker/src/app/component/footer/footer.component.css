@@ -1,0 +1,27 @@
+footer .items {
+  padding: 20px 10px;
+}
+
+footer .copyright {
+  text-align: center;
+  padding-bottom: 30px;
+  font-size: 12px;
+}
+
+ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+li {
+  list-style-type: none;
+}
+
+li a {
+  cursor: pointer;
+}
+
+li a:hover {
+  text-decoration: underline;
+  opacity: 0.7;
+}
