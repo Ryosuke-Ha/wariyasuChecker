@@ -1,9 +1,11 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <span>wariyasuChecker</span>
-  </mat-toolbar-row>
-</mat-toolbar>
-<app-top-page></app-top-page>
-<footer>
-  <p>Copyright © 2021 wriyasuChecker All Right Reserved.</p>
-</footer>
+<app-header></app-header>
+<!-- <app-top-page></app-top-page> -->
+<section>
+  <div *ngIf="!isLogin">
+    <app-login></app-login>
+  </div>
+  <div *ngIf="isLogin">
+    <app-home></app-home>
+  </div>
+</section>
+<app-footer></app-footer>
