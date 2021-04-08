@@ -1,7 +1,25 @@
 .wrap-card{
-  display: inline-block;
+  text-align: center;
   .card{
-    width: 60%;
+    width: 40%;
+    display: inline-block;
+    .mat-card-header.main-color.main-font{
+      .mat-card-title{
+        margin-bottom: 0;
+      }
+    }
+    .card-input{
+      display: block;
+      width: 80%;
+      margin: 20px auto;
+    }
+    .card-link{
+      text-decoration: underline;
+      cursor: pointer;
+      &:hover{
+        text-decoration: none;
+      }
+    }
   }
 }
 

@@ -1,82 +1,84 @@
-<span *ngIf="showLogin" class="wrap-card">
-  <mat-card class="card">
-    <mat-card-header class="main-color main-font">
-      <mat-card-title>ログイン</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput  placeholder="Ex. pat@example.com">
-          <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error> -->
-          <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error> -->
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Password</mat-label>
-          <input type="password" matInput  placeholder="password">
-          <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error> -->
-          <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error> -->
-        </mat-form-field>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary">ログイン</button>
-    </mat-card-actions>
-    <a (click)="changeDisplay()">新規登録はこちら</a>
-  </mat-card>
-</span>
+<div class="wrap-card">
+  <span *ngIf="showLogin">
+    <mat-card class="card">
+      <mat-card-header class="main-color main-font">
+        <mat-card-title>ログイン</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form>
+          <mat-form-field class="card-input">
+            <mat-label>メールアドレス</mat-label>
+            <input type="email" matInput [formControl]="loginMailForm">
+            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error> -->
+            <mat-error *ngIf="loginMailForm.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="card-input">
+            <mat-label>パスワード</mat-label>
+            <input type="password" matInput>
+            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error> -->
+            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">ログイン</button>
+      </mat-card-actions>
+      <a class="card-link" (click)="changeDisplay()">新規登録はこちら</a>
+    </mat-card>
+  </span>
+  <span *ngIf="!showLogin" >
+    <mat-card class="card">
+      <mat-card-header class="main-color main-font">
+        <mat-card-title>新規登録</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form>
+          <mat-form-field class="card-input">
+            <mat-label>メールアドレス</mat-label>
+            <input type="email" matInput>
+            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error> -->
+            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="card-input">
+            <mat-label>パスワード</mat-label>
+            <input type="password" matInput>
+            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error> -->
+            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+          <mat-form-field class="card-input">
+            <mat-label>確認用パスワード</mat-label>
+            <input type="Comfirmpassword" matInput>
+            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Please enter a valid email address
+            </mat-error> -->
+            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error> -->
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary">新規登録</button>
+      </mat-card-actions>
+      <a class="card-link" (click)="changeDisplay()">ログインはこちら</a>
+    </mat-card>
+  </span>
+</div>
 
-<span *ngIf="!showLogin">
-  <mat-card class="card">
-    <mat-card-header class="main-color main-font">
-      <mat-card-title>新規登録</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <form class="example-form">
-        <mat-form-field class="example-full-width">
-          <mat-label>Email</mat-label>
-          <input type="email" matInput  placeholder="Ex. pat@example.com">
-          <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error> -->
-          <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error> -->
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>Password</mat-label>
-          <input type="password" matInput  placeholder="password">
-          <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error> -->
-          <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error> -->
-        </mat-form-field>
-        <mat-form-field class="example-full-width">
-          <mat-label>ComfirmPassword</mat-label>
-          <input type="Comfirmpassword" matInput  placeholder="comfirmPassword">
-          <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Please enter a valid email address
-          </mat-error> -->
-          <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-            Email is <strong>required</strong>
-          </mat-error> -->
-        </mat-form-field>
-      </form>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button color="primary">新規登録</button>
-    </mat-card-actions>
-    <a (click)="changeDisplay()">ログインはこちら</a>
-  </mat-card>
-</span>
 
