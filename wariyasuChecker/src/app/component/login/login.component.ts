@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormControlDirective, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { LoginValidator } from './loginValidator';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,44 @@ import { FormControl, FormControlDirective, FormGroup, Validators } from '@angul
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
-  signinFrom: FormGroup;
+  loginMailForm = new FormControl('',[
+    Validators.required,
+    Validators.email
+  ]);
+  loginPassForm = new FormControl('',[
+    Validators.required,
+    Validators.minLength(7)
+  ]);
 
-  loginMailForm = new FormControl('',[Validators.required]);
-  loginPassForm: FormControl;
+  siginMailForm = new FormControl('',[
+    Validators.required,
+    Validators.email
+  ]);
+  siginPassForm = new FormControl('',[
+    Validators.required,
+    Validators.minLength(7),
+    LoginValidator.checkValidPass
+  ]);
+  siginComfirmPassForm = new FormControl('',[
+    Validators.required
+  ]);
 
-  siginMailForm: FormControl;
-  siginPassForm: FormControl;
-  siginComfirmPassForm: FormControl;
+  loginFormGroup = this.fb.group({
+    mail: this.loginMailForm,
+    pass: this.loginPassForm
+  });
+
+  siginFormGroup = this.fb.group({
+    mail: this.siginMailForm,
+    pass: this.siginPassForm,
+    comfirmPass: this.siginComfirmPassForm
+  });
 
   showLogin = true;
 
-  constructor() { }
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
 
@@ -28,6 +54,14 @@ export class LoginComponent implements OnInit {
 
   changeDisplay(): void{
     this.showLogin = !this.showLogin;
+  }
+
+  login(){
+    alert('login');
+  }
+
+  sigin(){
+    alert('sigin');
   }
 
 }

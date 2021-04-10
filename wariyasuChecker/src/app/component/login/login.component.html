@@ -1,39 +1,39 @@
 <div class="wrap-card">
+  <!-- login -->
   <span *ngIf="showLogin">
     <mat-card class="card">
       <mat-card-header class="main-color main-font">
         <mat-card-title>ログイン</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <form>
+        <form [formGroup]="loginFormGroup">
           <mat-form-field class="card-input">
             <mat-label>メールアドレス</mat-label>
             <input type="email" matInput [formControl]="loginMailForm">
-            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error> -->
+            <mat-error *ngIf="loginMailForm.hasError('email') && !loginMailForm.hasError('required')">
+              利用可能なメールアドレスを入力してください。
+            </mat-error>
             <mat-error *ngIf="loginMailForm.hasError('required')">
-              Email is <strong>required</strong>
+              必須入力です。
             </mat-error>
           </mat-form-field>
           <mat-form-field class="card-input">
             <mat-label>パスワード</mat-label>
-            <input type="password" matInput>
-            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error> -->
-            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error> -->
+            <input type="password" matInput [formControl]="loginPassForm">
+            <mat-error *ngIf="loginPassForm.hasError('required')">
+              必須入力です。
+            </mat-error>
+            <mat-error *ngIf="loginPassForm.hasError('minlength')">
+              7文字以上入力してください。
+            </mat-error>
           </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="loginFormGroup.invalid" (click)="login()">ログイン</button>
         </form>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary">ログイン</button>
-      </mat-card-actions>
       <a class="card-link" (click)="changeDisplay()">新規登録はこちら</a>
     </mat-card>
   </span>
+  <!-- signin -->
   <span *ngIf="!showLogin" >
     <mat-card class="card">
       <mat-card-header class="main-color main-font">
@@ -43,39 +43,40 @@
         <form>
           <mat-form-field class="card-input">
             <mat-label>メールアドレス</mat-label>
-            <input type="email" matInput>
-            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error> -->
-            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error> -->
+            <input type="email" matInput [formControl]="siginMailForm">
+            <mat-error *ngIf="siginMailForm.hasError('email') && !siginMailForm.hasError('required')">
+              利用可能なメールアドレスを入力してください。
+            </mat-error>
+            <mat-error *ngIf="siginMailForm.hasError('required')">
+              必須入力です。
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="card-input">
             <mat-label>パスワード</mat-label>
-            <input type="password" matInput>
-            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error> -->
-            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
-            </mat-error> -->
+            <input type="password" matInput [formControl]="siginPassForm">
+            <mat-error *ngIf="siginPassForm.hasError('required')">
+              必須入力です。
+            </mat-error>
+            <mat-error *ngIf="siginPassForm.hasError('minlength')">
+              7文字以上入力してください。
+            </mat-error>
+            <mat-error *ngIf="siginPassForm.hasError('password')">
+              半角英数字を使用してください。
+            </mat-error>
           </mat-form-field>
           <mat-form-field class="card-input">
             <mat-label>確認用パスワード</mat-label>
-            <input type="Comfirmpassword" matInput>
-            <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-              Please enter a valid email address
-            </mat-error> -->
-            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
-              Email is <strong>required</strong>
+            <input type="Comfirmpassword" matInput [formControl]="siginComfirmPassForm">
+            <mat-error *ngIf="siginComfirmPassForm.hasError('required')">
+              必須入力です。
+            </mat-error>
+            <!-- <mat-error *ngIf="siginComfirmPassForm.hasError('comfirmPass')">
+              必須入力です。
             </mat-error> -->
           </mat-form-field>
+          <button mat-raised-button color="primary">新規登録</button>
         </form>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="primary">新規登録</button>
-      </mat-card-actions>
       <a class="card-link" (click)="changeDisplay()">ログインはこちら</a>
     </mat-card>
   </span>
