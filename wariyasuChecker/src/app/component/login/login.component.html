@@ -66,13 +66,13 @@
           </mat-form-field>
           <mat-form-field class="card-input">
             <mat-label>確認用パスワード</mat-label>
-            <input type="Comfirmpassword" matInput [formControl]="siginComfirmPassForm">
+            <input type="password" matInput [formControl]="siginComfirmPassForm">
             <mat-error *ngIf="siginComfirmPassForm.hasError('required')">
               必須入力です。
             </mat-error>
-            <!-- <mat-error *ngIf="siginComfirmPassForm.hasError('comfirmPass')">
-              必須入力です。
-            </mat-error> -->
+            <mat-error *ngIf="siginComfirmPassForm.errors?.comparePass">
+              パスワードの入力内容と一致させてください。
+            </mat-error>
           </mat-form-field>
           <button mat-raised-button color="primary">新規登録</button>
         </form>

@@ -40,6 +40,10 @@ export class LoginComponent implements OnInit {
     mail: this.siginMailForm,
     pass: this.siginPassForm,
     comfirmPass: this.siginComfirmPassForm
+  },{
+    validators:[
+      LoginValidator.comparePass
+    ]
   });
 
   showLogin = true;

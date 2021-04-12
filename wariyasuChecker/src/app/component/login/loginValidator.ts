@@ -14,17 +14,12 @@ export class LoginValidator{
     return null;
   }
 
-  // public static comfirmPass(control: FormControl, abstractControl: AbstractControl){
-  //   // const pass = group.controls['siginPassForm'].value;
-  //   // const comfirmPass = group.controls['siginComfirmPassForm'].value;
+  static comparePass(abstractControl: AbstractControl): void{
+    const pass = abstractControl.get('pass').value;
+    const comfirmPass =abstractControl.get('comfirmPass').value;
 
-  //   // if(pass.value !== comfirmPass.value){
-  //   //   return { comfirmPass: true};
-  //   // }
-  //   // else{
-  //   //   return null;
-  //   // }
-
-  //   return { comfirmPass: true};
-  // }
+    if(pass !== comfirmPass){
+      abstractControl.get('comfirmPass').setErrors({ comparePass: true});
+    }
+  }
 }
