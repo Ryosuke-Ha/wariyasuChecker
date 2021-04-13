@@ -1,8 +1,19 @@
+$sp: 480px;
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
 .wrap-card{
   text-align: center;
   .card{
-    width: 40%;
-    display: inline-block;
+      width: 40%;
+      display: inline-block;
+
+      @include sp{
+        width: 90%;
+      };
     .mat-card-header.main-color.main-font{
       .mat-card-title{
         margin-bottom: 0;

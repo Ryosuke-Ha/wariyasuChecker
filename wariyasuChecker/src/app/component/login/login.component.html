@@ -6,7 +6,7 @@
         <mat-card-title>ログイン</mat-card-title>
       </mat-card-header>
       <mat-card-content>
-        <form [formGroup]="loginFormGroup">
+        <form>
           <mat-form-field class="card-input">
             <mat-label>メールアドレス</mat-label>
             <input type="email" matInput [formControl]="loginMailForm">
@@ -74,7 +74,7 @@
               パスワードの入力内容と一致させてください。
             </mat-error>
           </mat-form-field>
-          <button mat-raised-button color="primary">新規登録</button>
+          <button mat-raised-button color="primary" [disabled]="siginFormGroup.invalid" (click)="sigin()">新規登録</button>
         </form>
       </mat-card-content>
       <a class="card-link" (click)="changeDisplay()">ログインはこちら</a>
