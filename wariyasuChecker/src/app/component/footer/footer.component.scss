@@ -1,3 +1,10 @@
+$sp: 480px;
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
 footer
 {
   .items{
@@ -13,10 +20,19 @@ footer
 ul{
   display: flex;
   justify-content: space-around;
+  @include sp{
+    display: unset;
+    padding-left: 0;
+  }
 }
 
 li{
   list-style-type: none;
+  @include sp{
+    width: 90%;
+    display: inline-block !important;
+    margin: 10px 5px 10px 40px;
+  }
   a{
     cursor: pointer;
   }

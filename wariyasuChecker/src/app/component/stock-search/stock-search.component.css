@@ -1,0 +1,19 @@
+.field-display {
+  display: block;
+  margin: 0 auto;
+}
+
+.field-item {
+  width: 50%;
+}
+
+@media (max-width: 480px) {
+  .field-item {
+    width: 100%;
+  }
+}
+
+.panel-header-center {
+  flex-grow: 0 !important;
+  margin: 0 auto;
+}

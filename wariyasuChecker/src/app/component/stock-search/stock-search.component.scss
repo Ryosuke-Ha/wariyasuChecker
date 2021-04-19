@@ -1,0 +1,23 @@
+$sp: 480px;
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
+  }
+}
+
+.field-display{
+  display: block;
+  margin: 0 auto;
+}
+
+.field-item{
+  width: 50%;
+  @include sp{
+    width: 100%;
+  }
+}
+
+.panel-header-center{
+  flex-grow: 0!important;
+  margin: 0 auto;
+}

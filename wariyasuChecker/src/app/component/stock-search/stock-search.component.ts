@@ -6,12 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stock-search.component.scss']
 })
 export class StockSearchComponent implements OnInit {
-
-  panelOpenState = false;
+  panelOpenState = true;
 
   constructor() { }
 
   ngOnInit(): void {
+
+  }
+
+  searchStocks(){
+    this.panelOpenState = false;
+  }
+
+  clearSearch(){
+    this.panelOpenState = true;
   }
 
 }

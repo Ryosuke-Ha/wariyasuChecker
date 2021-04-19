@@ -13,8 +13,23 @@ ul {
   justify-content: space-around;
 }
 
+@media (max-width: 480px) {
+  ul {
+    display: unset;
+    padding-left: 0;
+  }
+}
+
 li {
   list-style-type: none;
+}
+
+@media (max-width: 480px) {
+  li {
+    width: 90%;
+    display: inline-block !important;
+    margin: 10px 5px 10px 40px;
+  }
 }
 
 li a {

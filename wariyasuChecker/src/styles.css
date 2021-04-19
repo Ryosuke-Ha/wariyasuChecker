@@ -15,3 +15,7 @@ body {
 .main-font {
   color: #fff;
 }
+
+.text-center {
+  text-align: center;
+}
