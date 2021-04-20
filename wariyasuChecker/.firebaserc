@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "wariyasuchecker": {
+      "hosting": {
+        "wariyasuChecker": [
+          "wariyasuchecker"
+        ]
+      }
+    }
+  }
+}
