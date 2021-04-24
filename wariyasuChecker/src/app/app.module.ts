@@ -17,6 +17,7 @@ import { FooterComponent } from './component/footer/footer.component';
 import { LoginComponent } from './component/login/login.component';
 import { HomeComponent } from './component/home/home.component';
 import { StockSearchComponent } from './component/stock-search/stock-search.component';
+import { CompanyListComponent } from './component/company-list/company-list.component';
 
 //angular material
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -27,6 +28,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { MatSelectModule } from '@angular/material/select';
     FooterComponent,
     LoginComponent,
     HomeComponent,
-    StockSearchComponent
+    StockSearchComponent,
+    CompanyListComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatSelectModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

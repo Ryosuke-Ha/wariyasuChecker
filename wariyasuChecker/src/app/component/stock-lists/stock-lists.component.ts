@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { DisplayLists } from 'src/app/model/display-lists.model';
 
-import { GetPerListService } from 'src/app/service/get-per-list.service';
+import { GetPerListService } from 'src/app/service/get-per-list/get-per-list.service';
 
 @Component({
   selector: 'app-stock-lists',

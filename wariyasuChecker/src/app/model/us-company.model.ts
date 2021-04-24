@@ -1,7 +1,7 @@
-export interface UsCompany{
-  companyId: number;
+export class UsCompany{
+  companyId: string;
   companyName: string;
   ticker: string;
-  sectorId: number;
+  sectorId: string;
   deleteFlg: number;
 }
