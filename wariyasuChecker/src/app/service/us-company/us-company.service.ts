@@ -1,38 +1,30 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Sector, SectorWithCompanyList } from 'src/app/model/sector.model';
 import { UsCompany } from 'src/app/model/us-company.model';
+import { SectorService } from '../sector/sector.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UsCompanyService implements OnInit {
+export class UsCompanyService {
 
   private usCompanyCollection: AngularFirestoreCollection<UsCompany>;
-
-  private sectorCollection: AngularFirestoreCollection<Sector>;
 
   resultList: SectorWithCompanyList[] = [];
 
   constructor(
-    private afStore: AngularFirestore
+    private afStore: AngularFirestore,
+    private sectorService: SectorService
   ) { }
-
-  ngOnInit(){
-  }
 
   getUsCompanyAll(){
     this.usCompanyCollection = this.afStore.collection<UsCompany>('usCompany');
     return this.usCompanyCollection.valueChanges();
   }
 
-  getSectorAll(){
-    this.sectorCollection = this.afStore.collection<Sector>('sector');
-    return this.sectorCollection.valueChanges();
-  }
-
   getUsCompanyWithSectorName(){
-    this.getSectorAll().subscribe(res => {
+    this.sectorService.getSectorAll().subscribe(res => {
       res.forEach(sect => {
         this.getUsCompanyAll().subscribe(resUs => {
           let usList: UsCompany[] = [];
@@ -50,8 +42,6 @@ export class UsCompanyService implements OnInit {
     });
 
     return this.resultList;
-
-
   }
 
   //firestore登録用(使用後削除)
