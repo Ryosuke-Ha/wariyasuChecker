@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Sector } from 'src/app/model/sector.model';
 
 @Injectable({
@@ -13,8 +15,7 @@ export class SectorService {
     private afStore: AngularFirestore
   ) { }
 
-  getSectorAll(){
-    this.sectorCollection = this.afStore.collection<Sector>('sector');
-    return this.sectorCollection.valueChanges();
+  getSectorAll(): Observable<Sector[]>{
+    return this.afStore.collection<Sector>('sector').valueChanges().pipe(map(res => {return res;}));
   }
 }

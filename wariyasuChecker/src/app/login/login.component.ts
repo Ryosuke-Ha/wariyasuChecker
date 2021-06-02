@@ -8,7 +8,6 @@ import { LoginValidator } from './loginValidator';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
   loginMailForm = new FormControl('',[
     Validators.required,
     Validators.email
@@ -48,12 +47,12 @@ export class LoginComponent implements OnInit {
 
   showLogin = true;
 
+
   constructor(
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
-
   }
 
   changeDisplay(): void{
@@ -67,5 +66,4 @@ export class LoginComponent implements OnInit {
   sigin(){
     alert('sigin');
   }
-
 }

@@ -12,6 +12,9 @@ export const environment = {
     messagingSenderId: "532276336855",
     appId: "1:532276336855:web:2c1be0f1da9f0b45b0f892",
     measurementId: "G-JY88REGJQS"
+  },
+  alphavantage: {
+    apiKey: "6AO9AXYWJZBFT0TB"
   }
 };
 

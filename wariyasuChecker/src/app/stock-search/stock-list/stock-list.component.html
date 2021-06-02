@@ -1,8 +1,5 @@
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
   <!-- ticker Column -->
   <ng-container matColumnDef="ticker">
     <th mat-header-cell *matHeaderCellDef> ticker </th>
@@ -44,3 +41,10 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<div class="list-explanation">
+  <mat-hint>
+    〇：割安　△：やや割安やや割高　✕：割高
+    <br>※計算基準は<a class="culculare-link" href="#">こちら</a>をご覧ください。
+  </mat-hint>
+</div>

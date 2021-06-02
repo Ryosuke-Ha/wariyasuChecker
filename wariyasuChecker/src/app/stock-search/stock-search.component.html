@@ -30,7 +30,5 @@
     </span>
   </mat-expansion-panel>
 </mat-accordion>
+<app-stock-list *ngIf="!panelOpenState"></app-stock-list>
 
-<span *ngIf="!panelOpenState">
-  <app-stock-lists></app-stock-lists>
-</span>

@@ -1,0 +1,23 @@
+table {
+  width: 80%;
+  margin: 20px auto;
+}
+
+.perColor {
+  font-weight: bold;
+  color: red;
+}
+
+.list-explanation{
+  text-align: center;
+  margin-left: 20px;
+  margin-bottom: 30px;
+}
+
+.culculare-link{
+  text-decoration: none;
+}
+
+.culculare-link:hover{
+  text-decoration: underline;
+}

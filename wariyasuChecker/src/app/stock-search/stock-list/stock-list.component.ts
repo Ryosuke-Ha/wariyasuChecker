@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-
-import { DisplayLists } from 'src/app/model/display-lists.model';
-
-import { GetPerListService } from 'src/app/service/get-per-list/get-per-list.service';
+import { DisplayLists } from 'src/app/stock-search/shared/display-lists.model';
 
 @Component({
-  selector: 'app-stock-lists',
-  templateUrl: './stock-lists.component.html',
-  styleUrls: ['./stock-lists.component.scss']
+  selector: 'app-stock-list',
+  templateUrl: './stock-list.component.html',
+  styleUrls: ['./stock-list.component.scss']
 })
-export class StockListsComponent implements OnInit {
-
-  constructor(
-    private getPerListService: GetPerListService
-  ) { }
-
-  ngOnInit(): void {
-  }
+export class StockListComponent implements OnInit {
 
   displayedColumns: string[] = ['ticker', 'company', 'PER', 'PSR', 'PBR', 'yield'];
   dataSource = ELEMENT_DATA;
 
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
 }
+
+// pipeで〇△✕の表記を変更する？
+// 計算結果 | 平均値(pipeを作成する)
 
 const ELEMENT_DATA: DisplayLists[] = [
   {Ticker: 'AA', Company: 'Hydrogen', Sector: 'aa', PER: 1.0079, perFlug: true,  PSR: 1.0079, PBR: 1.0079, Yield: 1.0079 },

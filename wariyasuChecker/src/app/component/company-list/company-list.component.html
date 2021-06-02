@@ -1,8 +1,0 @@
-<mat-list *ngFor="let listItem of lists$">
-  <div mat-subheader>{{listItem.sectorName}}</div>
-  <mat-list-item *ngFor="let list of listItem.companyList">
-    <div mat-lin>{{list.companyName}}({{list.ticker}})</div>
-  </mat-list-item>
-  <hr>
-</mat-list>
-<mat-hint>掲載内容は予告なしに変更する場合があります。予めご了承ください。</mat-hint>

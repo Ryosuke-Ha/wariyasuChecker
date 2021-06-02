@@ -8,58 +8,26 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAnalyticsModule } from '@angular/fire/analytics';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http'
 
-// component
-import { TopPageComponent } from './component/top-page/top-page.component';
-import { StockListsComponent } from './component/stock-lists/stock-lists.component';
-import { HeaderComponent } from './component/header/header.component';
-import { FooterComponent } from './component/footer/footer.component';
-import { LoginComponent } from './component/login/login.component';
-import { HomeComponent } from './component/home/home.component';
-import { StockSearchComponent } from './component/stock-search/stock-search.component';
-import { CompanyListComponent } from './component/company-list/company-list.component';
-
-//angular material
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatTableModule } from '@angular/material/table';
-import { MatTabsModule } from '@angular/material/tabs';
-import { MatCardModule } from '@angular/material/card';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MatSelectModule } from '@angular/material/select';
-import { MatListModule } from '@angular/material/list';
+// module
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TopPageComponent,
-    StockListsComponent,
-    HeaderComponent,
-    FooterComponent,
-    LoginComponent,
-    HomeComponent,
-    StockSearchComponent,
-    CompanyListComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
-    MatTableModule,
-    MatTabsModule,
-    MatCardModule,
-    MatInputModule,
-    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    MatExpansionModule,
-    MatSelectModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,
     AngularFirestoreModule,
-    MatListModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
