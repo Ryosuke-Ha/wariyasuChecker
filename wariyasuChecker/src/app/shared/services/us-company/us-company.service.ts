@@ -3,6 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { UsCompany } from 'src/app/model/us-company.model';
+import { Index } from 'src/app/stock-search/shared/index.model';
 import { SectorService } from '../../../service/sector/sector.service';
 import { Sector, SectorWithCompanyList } from '../../models/sector.model';
 
@@ -49,10 +50,10 @@ export class UsCompanyService {
   }
 
   //firestore登録用(使用後削除)
-  createCollection(data: Sector[]){
+  createCollection(data: Index[]){
     data.forEach(item => {
       return new Promise<any>((resolve, reject) =>{
-        this.afStore.collection("sector")
+        this.afStore.collection("index")
         .add(item)
         .then(res => {}, err => reject(err))
       });

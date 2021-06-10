@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsCompanyService } from '../shared/services/us-company/us-company.service';
+import { Index } from './shared/index.model';
 import { LatestStockService } from './shared/latest-stock.service';
 
 @Component({
@@ -28,3 +29,6 @@ export class StockSearchComponent implements OnInit {
     this.panelOpenState = true;
   }
 }
+
+
+

@@ -4,12 +4,12 @@ export class LatestStock{
   ticker: string;
   lastRefreshed: string;
   // 始値
-  open: string;
+  open: number;
   //高値
-  high: string;
+  high: number;
   //安値
-  low: string;
+  low: number;
   //終値
-  close: string;
-  adjusted: string;
+  close: number;
+  adjusted: number;
 }
