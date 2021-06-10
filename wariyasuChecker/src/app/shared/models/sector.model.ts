@@ -1,4 +1,4 @@
-import { UsCompany } from "./us-company.model";
+import { UsCompany } from "src/app/model/us-company.model";
 
 export class Sector{
   sectorId: string;

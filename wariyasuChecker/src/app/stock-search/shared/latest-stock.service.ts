@@ -1,24 +1,37 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { of } from 'rxjs';
 import { LatestStock } from 'src/app/model/latestStock.model';
+import { UsCompany } from 'src/app/model/us-company.model';
+import { Sector } from 'src/app/shared/models/sector.model';
+import { UsCompanyService } from 'src/app/shared/services/us-company/us-company.service';
 import { environment } from 'src/environments/environment';
-import { UsCompanyService } from '../us-company/us-company.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class LatestStockService {
+export class LatestStockService implements OnInit {
+
+  usCompanies: any;
 
   constructor(
     private http: HttpClient,
-    private usCompanyService: UsCompanyService,
-    private afStore: AngularFirestore
+    private afStore: AngularFirestore,
+    private usCompanyService: UsCompanyService
   ) { }
+
+  ngOnInit(){
+    this.usCompanies = this.usCompanyService.getUsCompanyLists();
+  }
 
   temporarySleep(delay) {
     let endTime = new Date().getTime()+parseInt(delay);
     while (new Date().getTime() < endTime );
+}
+
+updateLatestStock(){
+  console.log(this.usCompanies);
 }
 
 
@@ -92,10 +105,6 @@ export class LatestStockService {
   private requestAlphavantage(ticker: string){
     let api = `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${ticker}&apikey=${environment.alphavantage.apiKey}`;
 
-    //let test = this.http.get(api);
-
-    //let test2 = test['Meta Data']['3. Last Refreshed'];
-
     return this.http.get(api);
   }
 
@@ -117,3 +126,16 @@ export class LatestStockService {
     } );
   }
 }
+
+const SECTOR_LISTS: Sector[] = [
+  { sectorId: "05", sectorName: "生活必需品"},
+  { sectorId: "00", sectorName: "公益"},
+  { sectorId: "01", sectorName: "素材"},
+  { sectorId: "07", sectorName: "一般消費財"},
+  { sectorId: "06", sectorName: "ヘルスケア"},
+  { sectorId: "09", sectorName: "コミュニケーションサービス"},
+  { sectorId: "08", sectorName: "エネルギー"},
+  { sectorId: "02", sectorName: "金融"},
+  { sectorId: "03", sectorName: "資本財"},
+  { sectorId: "04", sectorName: "情報技術"}
+];

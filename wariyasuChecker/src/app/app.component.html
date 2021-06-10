@@ -1,3 +1,12 @@
 <app-header></app-header>
-<router-outlet></router-outlet>
+  <span *ngIf="errorFlg == ''">
+    <router-outlet></router-outlet>
+  </span>
+  <span *ngIf="errorFlg == 'error'">
+    <app-error-page [errorMsg]="errorMsg"></app-error-page>
+  </span>
 <app-footer></app-footer>
+
+
+
+

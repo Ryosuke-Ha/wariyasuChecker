@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http'
 
 // module
 import { SharedModule } from './shared/shared.module';
+
+// service
+import { ErrorHandlerService } from './shared/services/error-handler.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     SharedModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: ErrorHandlerService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

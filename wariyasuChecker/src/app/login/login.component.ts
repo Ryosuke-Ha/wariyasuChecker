@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { LoginValidator } from './loginValidator';
@@ -49,7 +50,9 @@ export class LoginComponent implements OnInit {
 
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    //delete after http
+    private http: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -65,5 +68,13 @@ export class LoginComponent implements OnInit {
 
   sigin(){
     alert('sigin');
+  }
+
+  //test, delete after
+  throwError(){
+    this.http.get('api/xxxxx').subscribe(res => {
+      console.log(res);
+    },
+    err => { throw err ;});
   }
 }

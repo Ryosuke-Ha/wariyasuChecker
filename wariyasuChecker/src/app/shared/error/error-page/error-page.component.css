@@ -1,0 +1,36 @@
+*{
+  color: #808080;
+}
+
+p{
+  font-size: 16px;
+}
+
+.error-wrap {
+  margin: 60px auto;
+  text-align: center;
+}
+
+.error{
+  margin-bottom: 60px;
+}
+
+.error h1{
+  font-size: 24px;
+}
+
+.error-sub h2{
+  font-size: 20px;
+}
+
+.error-sub ul{
+  color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+  padding: 20px;
+  width: 40%;
+  display: inline-block;
+  list-style: none;
+}
+

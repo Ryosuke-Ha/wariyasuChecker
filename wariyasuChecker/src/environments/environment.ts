@@ -15,6 +15,10 @@ export const environment = {
   },
   alphavantage: {
     apiKey: "6AO9AXYWJZBFT0TB"
+  },
+  smtpjs: {
+    token: "c6c5e0be-b011-41a6-9bee-df185da60f90",
+    email: "wariyasuinfo@gmail.com"
   }
 };
 
