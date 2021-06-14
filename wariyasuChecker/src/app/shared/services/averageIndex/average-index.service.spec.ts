@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AvarageIndexService } from './avarage-index.service';
+import { AverageIndexService } from './average-index.service';
 
 describe('AvarageIndexService', () => {
-  let service: AvarageIndexService;
+  let service: AverageIndexService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AvarageIndexService);
+    service = TestBed.inject(AverageIndexService);
   });
 
   it('should be created', () => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsCompanyService } from '../shared/services/us-company/us-company.service';
+import { CaluculateService } from './shared/caluculate.service';
 import { Index } from './shared/index.model';
 import { LatestStockService } from './shared/latest-stock.service';
 
@@ -11,9 +12,12 @@ import { LatestStockService } from './shared/latest-stock.service';
 export class StockSearchComponent implements OnInit {
   panelOpenState = true;
 
+  displayList: any;
+
   constructor(
     private latestStockService: LatestStockService,
-    private usCompanyService: UsCompanyService
+    private usCompanyService: UsCompanyService,
+    private caluculateService: CaluculateService
   ) { }
 
   ngOnInit(): void {
@@ -22,7 +26,9 @@ export class StockSearchComponent implements OnInit {
 
   searchStocks(){
     this.panelOpenState = false;
-    this.latestStockService.updateLatestStock();
+    //this.latestStockService.updateLatestStock();
+    this.displayList = this.caluculateService.caluculateForDisplay();
+    console.log(this.displayList);
   }
 
   clearSearch(){

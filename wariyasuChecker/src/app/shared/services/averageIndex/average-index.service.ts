@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Index } from '../../models/display.model';
+import { AverageIndex } from '../../models/display.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class IndexService {
+export class AverageIndexService {
 
   constructor(
     private afStore: AngularFirestore
   ) { }
 
-  getCollection(): Observable<Index[]>{
-    return this.afStore.collection<Index>('index').valueChanges();
+  getCollection(): Observable<AverageIndex[]>{
+    return this.afStore.collection<AverageIndex>('averageIndex').valueChanges();
   }
 }
