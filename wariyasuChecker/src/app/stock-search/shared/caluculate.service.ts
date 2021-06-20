@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { AverageIndexService } from 'src/app/shared/services/averageIndex/average-index.service';
 import { IndexService } from 'src/app/shared/services/index/index.service';
 import { LatestValueService } from 'src/app/shared/services/latestValue/latest-value.service';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,40 +13,66 @@ export class CaluculateService {
     private averageIndexService: AverageIndexService,
   ) { }
 
-  caluculateForDisplay(){
+  async caluculateForDisplay(){
+    const itemList = await this.margeIndexAndLatestValue();
+    return itemList;
+  }
+
+  private async margeIndexAndLatestValue(){
     let itemlist: any[] = new Array();
-    let result: any[] = new Array();
 
     this.latestValueService.getCollection().subscribe(latestList => {
-      this.indexService.getCollection().subscribe(indexList => {
-        latestList.forEach(latest => {
-          indexList.forEach(index => {
-            if((latest.companyId === index.id) && (Number(latest.lastRefreshed.substr(0,4)) == index.year)){
-              const item = {
-                id: index.id,
-                ticker: latest.ticker,
-                tempPER: latest.close / index.EPS,
-                tempPSR: latest.close / index.SPS,
-                tempPBR: latest.close / index.BPS,
-                tempYEILD: index.YEILD / latest.close
-              };
-              itemlist.push(item);
+        this.indexService.getCollection().subscribe(indexList => {
+          for(let i = 0; i < latestList.length; i++){
+            for(let y = 0; y < indexList.length; y++){
+              if((latestList[i].companyId === indexList[y].id) && (Number(latestList[i].lastRefreshed.substr(0,4)) == indexList[y].year)){
+                const item = {
+                  id: indexList[y].id,
+                  ticker: latestList[i].ticker,
+                  tempPER: latestList[i].close / indexList[y].EPS,
+                  tempPSR: latestList[i].close / indexList[y].SPS,
+                  tempPBR: latestList[i].close / indexList[y].BPS,
+                  tempYEILD: indexList[y].YEILD / latestList[i].close
+                };
+                itemlist.push(item);
+              }
             }
-          })
+          }
         });
       });
-    });
+    return itemlist
+  }
+
+  margeWithAveList(list: any[]){
+    let result: any[] = new Array();
 
     this.averageIndexService.getCollection().subscribe(aveList => {
-      const uniquAveList = new Map(aveList.map(a => [a.id, a]));
-      result = itemlist.map(({ id, ...rest }) => ({
-        ...rest,
-        ...uniquAveList.get(id)
-      }));
-
-      console.log(result)
+      for(let i = 0;i < aveList.length; i++){
+        for(let y = 0; y < list.length; y++){
+          if(aveList[i].id == list[y].id){
+            const item = {
+                            id: aveList[i].id,
+                            name: aveList[i].name,
+                            ticker: list[y].ticker,
+                            year: aveList[i].year,
+                            tempPER: list[y].tempPER,
+                            tempPSR: list[y].tempPSR,
+                            tempPBR: list[y].tempPBR,
+                            tempYEILD: list[y].tempYEILD,
+                            highPER: aveList[i].highPER,
+                            lowPER: aveList[i].lowPER,
+                            highPSR: aveList[i].highPSR,
+                            lowPSR: aveList[i].lowPSR,
+                            highPBR: aveList[i].highPBR,
+                            lowPBR: aveList[i].lowPBR,
+                            highYeild: aveList[i].highYeild,
+                            lowYeild: aveList[i].lowYeild
+                          };
+                          result.push(item);
+          }
+        }
+      }
     });
-
     return result;
   }
 }

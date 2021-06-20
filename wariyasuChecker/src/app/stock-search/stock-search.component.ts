@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UsCompanyService } from '../shared/services/us-company/us-company.service';
 import { CaluculateService } from './shared/caluculate.service';
-import { Index } from './shared/index.model';
-import { LatestStockService } from './shared/latest-stock.service';
 
 @Component({
   selector: 'app-stock-search',
@@ -12,22 +9,22 @@ import { LatestStockService } from './shared/latest-stock.service';
 export class StockSearchComponent implements OnInit {
   panelOpenState = true;
 
+  initialList: any;
   displayList: any;
 
   constructor(
-    private latestStockService: LatestStockService,
-    private usCompanyService: UsCompanyService,
     private caluculateService: CaluculateService
   ) { }
 
   ngOnInit(): void {
-
+    this.caluculateService.caluculateForDisplay().then(res => {
+      this.initialList = res;
+    });
   }
 
   searchStocks(){
     this.panelOpenState = false;
-    //this.latestStockService.updateLatestStock();
-    this.displayList = this.caluculateService.caluculateForDisplay();
+    this.displayList = this.caluculateService.margeWithAveList(this.initialList);
     console.log(this.displayList);
   }
 

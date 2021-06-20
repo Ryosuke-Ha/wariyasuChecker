@@ -13,5 +13,7 @@ export class ErrorHandlerService implements ErrorHandler{
     this.zone.run(() => {
       this.messageService.showError(error);
     });
+
+    console.log(error);
   }
 }

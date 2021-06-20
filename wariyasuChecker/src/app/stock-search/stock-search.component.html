@@ -32,3 +32,9 @@
 </mat-accordion>
 <app-stock-list *ngIf="!panelOpenState"></app-stock-list>
 
+<div *ngIf="!panelOpenState">
+  <div *ngFor="let list of displayList">
+    <p>{{ list.id }} {{ list.name }}</p>
+  </div>
+</div>
+
