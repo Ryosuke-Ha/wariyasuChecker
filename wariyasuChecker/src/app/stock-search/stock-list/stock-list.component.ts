@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DisplayLists } from 'src/app/stock-search/shared/display-lists.model';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-stock-list',
@@ -7,23 +6,52 @@ import { DisplayLists } from 'src/app/stock-search/shared/display-lists.model';
   styleUrls: ['./stock-list.component.scss']
 })
 export class StockListComponent implements OnInit {
+  @Input() displayList;
 
-  displayedColumns: string[] = ['ticker', 'company', 'PER', 'PSR', 'PBR', 'yield'];
-  dataSource = ELEMENT_DATA;
+  displayedColumns: string[] = ['ticker', 'company', 'PER', 'PSR', 'PBR', 'Yeild'];
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    
   }
 
+  changeDisplayItem(low: number, high: number, temp: number) {
+    let displayItem = '';
+
+    if (temp < 0) {
+      displayItem = '-';
+    } else {
+      if (low > temp) {
+        displayItem = '〇';
+      } else if (low < temp && high > temp) {
+        displayItem = '△';
+      } else if (high < temp) {
+        displayItem = '×';
+      } else {
+        displayItem = '-';
+      }
+    }
+    return displayItem;
+  }
+
+  changeDisplayItemYeild(low: number, high: number, temp: number) {
+    let displayItem = '';
+
+    if (temp < 0) {
+      displayItem = '-';
+    } else {
+      if (low < temp*100) {
+        displayItem = '〇';
+      } else if (low > temp*100 && high < temp*100) {
+        displayItem = '△';
+      } else if (high > temp*100) {
+        displayItem = '×';
+      } else {
+        displayItem = '-';
+      }
+    }
+    return displayItem;
+  }
 }
 
-// pipeで〇△✕の表記を変更する？
-// 計算結果 | 平均値(pipeを作成する)
-
-const ELEMENT_DATA: DisplayLists[] = [
-  {Ticker: 'AA', Company: 'Hydrogen', Sector: 'aa', PER: 1.0079, perFlug: true,  PSR: 1.0079, PBR: 1.0079, Yield: 1.0079 },
-  {Ticker: 'AA', Company: 'Helium', Sector: 'aa',  PER: 1.0079, perFlug: false, PSR: 1.0079, PBR: 1.0079, Yield: 1.0079 },
-  {Ticker: 'AA', Company: 'Lithium', Sector: 'aa',  PER: 1.0079, perFlug: false, PSR: 1.0079, PBR: 1.0079, Yield: 1.0079 },
-  {Ticker: 'AA', Company: 'Boron', Sector: 'aa',  PER: 1.0079, perFlug: false, PSR: 1.0079, PBR: 1.0079, Yield: 1.0079 },
-];

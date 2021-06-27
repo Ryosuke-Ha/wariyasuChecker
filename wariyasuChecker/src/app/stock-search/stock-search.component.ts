@@ -25,7 +25,6 @@ export class StockSearchComponent implements OnInit {
   searchStocks(){
     this.panelOpenState = false;
     this.displayList = this.caluculateService.margeWithAveList(this.initialList);
-    console.log(this.displayList);
   }
 
   clearSearch(){
