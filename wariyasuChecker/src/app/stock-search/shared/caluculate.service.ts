@@ -25,7 +25,7 @@ export class CaluculateService {
         this.indexService.getCollection().subscribe(indexList => {
           for(let i = 0; i < latestList.length; i++){
             for(let y = 0; y < indexList.length; y++){
-              if((latestList[i].companyId === indexList[y].id) && (Number(latestList[i].lastRefreshed.substr(0,4)) == indexList[y].year)){
+              if((latestList[i].companyId.toString() === indexList[y].id.toString()) && (Number(latestList[i].lastRefreshed.substr(0,4)) == indexList[y].year)){
                 const item = {
                   id: indexList[y].id,
                   ticker: latestList[i].ticker,

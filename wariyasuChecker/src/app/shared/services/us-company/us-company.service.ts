@@ -1,5 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Subject } from 'rxjs';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { UsCompany } from 'src/app/model/us-company.model';
@@ -12,10 +13,10 @@ import { Sector, SectorWithCompanyList } from '../../models/sector.model';
 })
 export class UsCompanyService {
 
-  private usCompanyCollection: AngularFirestoreCollection<UsCompany>;
+  private usCompanyCollection: AngularFirestoreCollection<any>;
 
   resultList: SectorWithCompanyList[] = [];
-  usList: UsCompany[] = [];
+  usList: Subject<UsCompany[]> = new Subject();
   sectorList: Sector[] = [
     { sectorId: "05", sectorName: "生活必需品"},
     { sectorId: "00", sectorName: "公益"},
@@ -29,23 +30,16 @@ export class UsCompanyService {
     { sectorId: "04", sectorName: "情報技術"}
   ];
 
+  private ucCompanyList: any[];
+
   constructor(
     private afStore: AngularFirestore,
     private sectorService: SectorService
   ) {
+    this.usCompanyCollection = this.afStore.collection<UsCompany>('usCompany');
    }
 
-   getUsCompanyLists(){
-     return this.getUsCompanyAllApi().pipe(
-       map(res => { return res; }
-        ,catchError(err => of(err)))
-     ).subscribe(res => {
-       return res;
-     },
-     err => { throw err; })
-   }
-
-   private getUsCompanyAllApi(): Observable<UsCompany[]>{
+   getCollection(){
     return this.afStore.collection<UsCompany>('usCompany').valueChanges();
   }
 

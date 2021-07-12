@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CaluculateService } from './shared/caluculate.service';
+import { LatestStockService } from './shared/latest-stock.service';
 
 @Component({
   selector: 'app-stock-search',
@@ -13,7 +14,8 @@ export class StockSearchComponent implements OnInit {
   displayList: any;
 
   constructor(
-    private caluculateService: CaluculateService
+    private caluculateService: CaluculateService,
+    private latestStockService: LatestStockService
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +31,10 @@ export class StockSearchComponent implements OnInit {
 
   clearSearch(){
     this.panelOpenState = true;
+  }
+
+  clickTest(){
+    this.latestStockService.getLatestStockList();
   }
 }
 

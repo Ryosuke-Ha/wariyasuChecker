@@ -9,7 +9,7 @@ export interface FinalDisplay {
 }
 
 export interface LatestValue {
-  companyId: number;
+  companyId: string;
   companyName: string;
   lastRefreshed: string;
   ticker: string;
