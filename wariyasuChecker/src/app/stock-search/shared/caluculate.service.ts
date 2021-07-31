@@ -52,6 +52,7 @@ export class CaluculateService {
           if(aveList[i].id == list[y].id){
             const item = {
                             id: aveList[i].id,
+                            sector: aveList[i].id.substr(0,2),
                             name: aveList[i].name,
                             ticker: list[y].ticker,
                             year: aveList[i].year,

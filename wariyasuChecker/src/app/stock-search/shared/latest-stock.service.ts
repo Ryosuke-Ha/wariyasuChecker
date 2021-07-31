@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { UsCompany } from 'src/app/model/us-company.model';
-import { LatestValue } from 'src/app/shared/models/display.model';
+
+import { LatestValue, UsCompany } from 'src/app/shared/models/display.model';
 import { Sector } from 'src/app/shared/models/sector.model';
 import { UsCompanyService } from 'src/app/shared/services/us-company/us-company.service';
 import { environment } from 'src/environments/environment';
@@ -25,28 +25,31 @@ export class LatestStockService implements OnInit {
   async getLatestStockList(){
     let usCompanyList: Array<UsCompany> = new Array<UsCompany>();
     let itemlist: Array<LatestValue> = new Array<LatestValue>();
+
+    console.log('getLatestStockList start');
     
-    // usCompanyList = await this.getUsCompanyList();
+    usCompanyList = await this.getUsCompanyList();
 
-    // for(let i = 0; i < usCompanyList.length; i++){
-    //   if((i + 1) % 5 === 0){
-    //     await this.sleepOneMinute();
-    //     console.log('fired ' + i);
-    //   }
+    for(let i = 0; i < usCompanyList.length; i++){
+      if((i + 1) % 5 === 0){
+        await this.sleepOneMinute();
+        console.log('fired ' + i);
+      }
 
-    //   const latestData = this.requestAlphavantage(usCompanyList[i].ticker, usCompanyList[i].companyId, usCompanyList[i].companyName);
+      const latestData = this.requestAlphavantage(usCompanyList[i].ticker, usCompanyList[i].companyId, usCompanyList[i].companyName);
 
-    //   latestData.then(data => {
-    //     itemlist.push(data);
-    //   });
-    // }
+      latestData.then(data => {
+        itemlist.push(data);
+      });
+    }
 
-    // await this.deleteAllDocOfLatestValue().then(res => {
-    //   this.createCollection(LATEST_VALUE);
+    console.log(itemlist);
+
+    await this.createCollection(itemlist);
+
+    // await this.deleteAllDocOfLatestValue(LATEST_VALUE).then(res => {
+        
     // });
-
-    await this.deleteAllDocOfLatestValue(LATEST_VALUE);
-    // await this.createCollection(LATEST_VALUE);
 
     console.log('done');
   }
@@ -104,11 +107,11 @@ export class LatestStockService implements OnInit {
             console.log('delete');
           });
 
-          data.forEach(item => {
-            this.afStore.collection("latestValue").add(item).then(res => {
-              console.log('added item');
-            });
-          });
+        //   data.forEach(item => {
+        //     this.afStore.collection("latestValue").add(item).then(res => {
+        //       console.log('added item');
+        //     });
+        //   });
 
         },
         err => { reject(err); });

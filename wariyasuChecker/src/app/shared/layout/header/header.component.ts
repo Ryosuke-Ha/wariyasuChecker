@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   title = 'wariyasuChecker';
+  version = '1.0.0';
 }

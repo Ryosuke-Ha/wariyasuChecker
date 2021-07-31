@@ -21,7 +21,7 @@ export interface LatestValue {
 }
 
 export interface Index {
-  id: number;
+  id: string;
   name: string;
   year: number;
   EPS: number | null;
@@ -31,15 +31,23 @@ export interface Index {
 }
 
 export interface AverageIndex {
-  id: number;
+  id: string;
   name: string;
   year: number | null;
-  highPER: number;
-  lowPER: number;
-  highPSR: number;
-  lowPSR: number;
-  highPBR: number;
-  lowPBR: number;
-  highYeild: number;
-  lowYeild: number;
+  highPER: number | null;
+  lowPER: number | null;
+  highPSR: number | null;
+  lowPSR: number | null;
+  highPBR: number | null;
+  lowPBR: number | null;
+  highYeild: number | null;
+  lowYeild: number | null;
+}
+
+export interface UsCompany{
+  companyId: string;
+  companyName: string;
+  ticker: string;
+  sectorId: string;
+  deleteFlg: number;
 }

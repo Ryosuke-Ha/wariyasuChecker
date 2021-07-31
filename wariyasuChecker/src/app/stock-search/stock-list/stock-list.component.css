@@ -10,8 +10,11 @@ table {
 
 .list-explanation{
   text-align: center;
-  margin-left: 20px;
-  margin-bottom: 30px;
+  margin: 10px 30px;
+  padding: 20px;
+  border: dashed 11px white;
+  color: #454545;
+  border: dashed 3px #4545;
 }
 
 .culculare-link{
@@ -20,4 +23,17 @@ table {
 
 .culculare-link:hover{
   text-decoration: underline;
+}
+
+td{
+  text-align: center;
+}
+
+table thead tr{
+  background-color: #cde4ff;
+  font-weight: bold;
+}
+
+table tbody tr:nth-child(odd){
+  background-color: #eee
 }

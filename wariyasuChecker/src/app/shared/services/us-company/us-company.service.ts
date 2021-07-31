@@ -3,9 +3,9 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Subject } from 'rxjs';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { UsCompany } from 'src/app/model/us-company.model';
 import { Index } from 'src/app/stock-search/shared/index.model';
 import { SectorService } from '../../../service/sector/sector.service';
+import { UsCompany } from '../../models/display.model';
 import { Sector, SectorWithCompanyList } from '../../models/sector.model';
 
 @Injectable({

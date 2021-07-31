@@ -1,37 +1,40 @@
-<mat-accordion>
-  <mat-expansion-panel [expanded]="panelOpenState">
-    <mat-expansion-panel-header>
-      <mat-panel-title class="panel-header-center">検索</mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-form-field class="field-item field-display">
-      <mat-label>全セクター</mat-label>
-      <mat-select>
-        <mat-option value="00">公益</mat-option>
-        <mat-option value="01">素材</mat-option>
-        <mat-option value="02">金融</mat-option>
-        <mat-option value="03">資本財</mat-option>
-        <mat-option value="04">情報技術</mat-option>
-        <mat-option value="05">生活必需品</mat-option>
-        <mat-option value="06">ヘルスケア</mat-option>
-        <mat-option value="07">一般消費財</mat-option>
-        <mat-option value="08">エネルギー</mat-option>
-        <mat-option value="09">コミュニケーション</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="field-item field-display">
-      <mat-label>Ticker</mat-label>
-      <input type="text" matInput>
-    </mat-form-field>
-    <span *ngIf="panelOpenState">
-      <button class="field-display" mat-raised-button color="primary" (click)="searchStocks()">検索</button>
-    </span>
-    <span *ngIf="!panelOpenState">
-      <button class="field-display" mat-raised-button color="primary" (click)="clearSearch()">クリア</button>
-    </span>
-  </mat-expansion-panel>
-</mat-accordion>
-<app-stock-list *ngIf="!panelOpenState" [displayList]="displayList"></app-stock-list>
-
-<br>
-
-<button (click)="clickTest()"></button>
+<section>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="panelOpenState">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="panel-header-center">検索</mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field class="field-item field-display">
+        <mat-label>全セクター</mat-label>
+        <mat-select (selectionChange)="changeSector($event.value)">
+          <mat-option value="">全セクター</mat-option>
+          <mat-option value="00">公益</mat-option>
+          <mat-option value="01">素材</mat-option>
+          <mat-option value="02">金融</mat-option>
+          <mat-option value="03">資本財</mat-option>
+          <mat-option value="04">情報技術</mat-option>
+          <mat-option value="05">生活必需品</mat-option>
+          <mat-option value="06">ヘルスケア</mat-option>
+          <mat-option value="07">一般消費財</mat-option>
+          <mat-option value="08">エネルギー</mat-option>
+          <mat-option value="09">コミュニケーション</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="field-item field-display">
+        <mat-label>Ticker</mat-label>
+        <input type="text" matInput #ticker>
+      </mat-form-field>
+      <span *ngIf="panelOpenState">
+        <button class="field-display" mat-raised-button color="primary" (click)="searchStocks(ticker.value)">検索</button>
+      </span>
+      <span *ngIf="!panelOpenState">
+        <button class="field-display" mat-raised-button color="primary" (click)="clearSearch()">クリア</button>
+      </span>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <app-stock-list *ngIf="!panelOpenState" [displayList]="displayList"></app-stock-list>
+  
+  <br>
+  
+  <button (click)="clickTest()"></button>
+</section>
